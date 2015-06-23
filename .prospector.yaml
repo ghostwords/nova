@@ -1,0 +1,10 @@
+strictness: medium
+
+#pep8:
+#  disable:
+#    - W602
+#    - W603
+#  enable:
+#    - W601
+#  options:
+#    max-line-length: 79
