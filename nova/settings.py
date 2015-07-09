@@ -20,9 +20,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# TODO
 SECRET_KEY = '8tf)dgnntodw!qx^fdw^t&jsl)s&y4)9x1zpe(_j21g!d+^z2!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
+# TODO
 DEBUG = True
 
 ALLOWED_HOSTS = []
@@ -37,10 +39,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
+    'core',
+    'signup',
+    'scheduler',
+    'review',
 )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -76,8 +84,11 @@ WSGI_APPLICATION = 'nova.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'nova',
+        'USER': 'alexei',
+        # TODO
+        'PASSWORD': 'RaccqiTurzL5kkR-ewa-tfoB79KrP_D'
     }
 }
 
@@ -87,7 +98,7 @@ DATABASES = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/New_York'
 
 USE_I18N = True
 

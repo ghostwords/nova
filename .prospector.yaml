@@ -1,10 +1,19 @@
-strictness: medium
+strictness: veryhigh
 
-#pep8:
-#  disable:
+pep8:
+  disable:
+    - E261
+    - E265
+    - E266
 #    - W602
 #    - W603
 #  enable:
 #    - W601
 #  options:
 #    max-line-length: 79
+
+pylint:
+  disable:
+    - C0103
+    - R0903
+    - W0105
