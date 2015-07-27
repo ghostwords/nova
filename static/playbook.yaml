@@ -1,0 +1,37 @@
+#rm -f nova.zip && zip -R nova '*' -x 'node_modules/*' Session.vim '*.swp' package.json
+
+#scp -P 8975 nova.zip panopticlicker.com:nova.zip
+
+#TIMESTAMP=$(date +%s%3N) && sudo -u www-data unzip -q nova.zip -d /var/www/novaapp.co-$TIMESTAMP && sudo -u www-data ln -s /var/www/novaapp.co-$TIMESTAMP /var/www/novaapp.co
+
+---
+- hosts: webservers
+
+  gather_facts: False
+
+  become: True
+  become_user: www-data
+
+  vars:
+    domain: staging.novaapp.co
+    release_dir: /var/www/{{ domain }}/releases/{{ timestamp.stdout }}
+
+  tasks:
+
+  - name: Get timestamp
+    local_action: shell date +%s%3N
+    register: timestamp
+    run_once: True
+    become: False
+
+  - name: Create release directory
+    file: path={{ release_dir }} state=directory
+
+  - name: Upload and unpack files
+    unarchive: src=nova.zip dest={{ release_dir }}
+
+  - name: Update app version
+    file:
+      state: link
+      src: "{{ release_dir }}"
+      path: /var/www/{{ domain }}/current

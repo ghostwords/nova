@@ -1,0 +1,14 @@
+{
+  "name": "Nova",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "cd public && zip -R ../nova.zip '*' -x '*.swp'",
+	"clean": "rm -f nova.zip",
+    "deploy": "npm run clean && npm run build && ansible-playbook playbook.yaml --ask-become-pass && npm run clean",
+    "start": "cd public && live-server >/dev/null 2>&1 &"
+  },
+  "dependencies": {
+    "live-server": "latest"
+  }
+}
