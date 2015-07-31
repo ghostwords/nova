@@ -1,50 +1,79 @@
 * {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
 }
 
 /*
  * -- BASE STYLES --
  * Most of these are inherited from Base, but I want to change a few.
  */
+
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	color: #4a4a4a;
 	font: normal 20px "Helvetica Neue", Helvetica, sans-serif;
 }
 
+a {
+	color: #5bc0de;
+}
+a:hover, a:focus {
+	color: #AECFE5;
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin: 0;
+}
+
 .pure-img-responsive {
-    max-width: 100%;
-    height: auto;
+	max-width: 100%;
+	height: auto;
 }
 
 /*
  * -- LAYOUT STYLES --
  * These are some useful classes which I will need
  */
+
 .l-box {
-    padding: 0.75em;
+	padding: 0.75em;
 }
 
 .is-center {
-    text-align: center;
+	text-align: center;
 }
 
+.anchor {
+	display: block;
+	position: relative;
+	/* fixed top bar offset */
+	top: -60px;
+	visibility: hidden;
+}
+
+.gray-bg {
+	background: #dcdcdc;
+}
 
 /*
  * -- PURE BUTTON STYLES --
  */
+
 .pure-button {
-    background-color: #1f8dd6;
-    color: white;
-    padding: 0.5em 0.75em;
-    border-radius: 5px;
+	background-color: #1f8dd6;
+	color: white;
+	padding: 0.5em 0.75em;
+	border-radius: 5px;
+	width: 8em;
 }
 
 a.pure-button-primary {
 	background-color: #5bc0de;
-    border-radius: 5px;
-    font-size: 110%;
+	border-radius: 5px;
+	font-size: 110%;
 	font-weight: bold;
 }
 
@@ -53,90 +82,102 @@ a.pure-button-primary {
  * -- MENU STYLES --
  */
 
+
 .home-menu {
-    background: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0, 0.10);
-    padding: 0.5em;
-    text-align: center;
+	background: white;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
+	padding: 0.5em;
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;
+
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
 }
 .pure-menu .pure-menu-fixed {
-    /* Fixed menus normally have a border at the bottom. */
-    border-bottom: none;
-    /* I need a higher z-index here because of the scroll-over effect. */
-    z-index: 4;
+	/* Fixed menus normally have a border at the bottom. */
+	border-bottom: none;
+	/* I need a higher z-index here because of the scroll-over effect. */
+	z-index: 4;
 }
 
 .pure-menu-heading {
-	padding: 0px;
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	/*width: 20%;*/               /* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	padding: 0 0.25em;
+}
+
+.pure-menu-link {
+	padding: 0 0.25em;
 }
 
 .home-menu .pure-menu-selected a {
 }
 
 .home-menu a {
-    color: #6FBEF3;
-    text-transform: uppercase;
+	color: #6FBEF3;
+	text-transform: uppercase;
 }
 .home-menu li a:hover,
 .home-menu li a:focus {
-    background: none;
-    border: none;
-    color: #AECFE5;
+	background: none;
+	border: none;
+	color: #AECFE5;
 }
-
-.footer a {
-    color: #4a4a4a;
-    text-transform: uppercase;
-}
-.footer li a:hover,
-.footer li a:focus {
-    background: none;
-    border: none;
-    color: #AECFE5;
-}
-
 
 /*
  * -- SPLASH/HERO STYLES --
  */
 
 .splash-container {
-	background-image: url(/img/bg.png);
-	background-position: right top;
+	background-image: url(/img/bg.jpg);
 	background-size: cover;
-    z-index: 1;
-    overflow: hidden;
-    /* The following styles are required for the "scroll-over" effect */
-    width: 100%;
-    height: 88%;
-    top: 0;
-    left: 0;
-    position: fixed !important;
+	background-position: right 40px;
+	z-index: 1;
+	overflow: hidden;
+	/* The following styles are required for the "scroll-over" effect */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed !important;
 }
 
 .splash {
-    /* absolute center .splash within .splash-container */
-    width: 80%;
-    height: 85%;
-    margin: auto;
-    position: absolute;
-    top: 100px; left: 0; bottom: 0; right: 0;
-    text-align: center;
+	/* absolute center .splash within .splash-container */
+	width: 85%;
+	height: 30%;
+	margin: auto;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	text-align: center;
+	max-width: 800px;
 }
 
 .splash a.pure-button {
-	margin: 0 35px 20px;
+	margin: 0 1em 0.75em;
 }
 
-/* This is the main heading that appears on the blue section */
 .splash-head {
-	color: #fff;
-	font-weight: bold;
-    line-height: 1em;
+	line-height: 1em;
+	margin: 0.5em 0;
 
+	color: white;
+	font-weight: bold;
+
+	-webkit-text-shadow: 1px 4px 5px #333;
+	-moz-text-shadow:    1px 4px 5px #333;
 	text-shadow:         1px 4px 5px #333;
-	-moz-text-shadow:    1px 4px 5px #4a4a4a;
-	-webkit-text-shadow: 1px 4px 5px #4a4a4a;
 }
 
 /*
@@ -148,37 +189,35 @@ a.pure-button-primary {
 }
 
 .content-wrapper {
-    /* These styles are required for the "scroll-over" effect */
-    position: absolute;
-    top: 87%;
-    width: 100%;
-    min-height: 12%;
-    z-index: 2;
-    background: white;
+	/* These styles are required for the "scroll-over" effect */
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	min-height: 12%;
+	z-index: 2;
+	background: white;
+	/* iOS z-index fix, maybe */
+	-webkit-transform: translate3d(0,0,0);
+}
 
+.main-wrapper {
+	margin: 0 auto;
+	max-width: 950px;
 }
 
 /* This is the class used for the main content headers (<h2>) */
 .content-head {
 	font-size: 20px;
 	font-weight: bold;
-    margin: 0;
-	text-decoration: underline;
+	margin: 0;
 	text-transform: capitalize;
 }
 
 /* This is the class used for the content sub-headers (<h3>) */
 .content-subhead {
-	font-size: 20px;
-	font-weight: normal;
-}
-
-.gray-bg {
-	background: #dcdcdc;
-}
-
-.copyright {
-	font-weight: bold;
+	color: #5bc0de;
+	font-size: 18px;
+	text-transform: uppercase;
 }
 
 /*
@@ -186,33 +225,65 @@ a.pure-button-primary {
  */
 
 .gallery {
-	margin-bottom: 40px;
+	margin: 20px 0;
 }
 .cell {
 	width: 100%;
 }
-.pure-g {
-	display: none;
+.flickity-page-dots {
+	bottom: -0.75em;
+}
+
+/*
+ * -- FOOTER STYLES --
+ */
+
+#footer .main-wrapper {
+	text-align: center;
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;
+
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+#footer a {
+	color: #4a4a4a;
+	text-transform: uppercase;
+}
+#footer li a:hover,
+#footer li a:focus {
+	background: none;
+	border: none;
+	color: #5bc0de;
+}
+
+#copyright {
+	font-weight: bold;
+	padding: 0.5em 1em;
 }
 
 /*
  * -- TABLET (AND UP) MEDIA QUERIES --
  */
+
 @media (min-width: 48em) {
+	.splash-container {
+		background-position: right 84px;
+	}
+
 	.content-head {
 		font-size: 40px;
+		margin: 15px 0;
 	}
 
-    /* We can align the menu header to the left, but float the
-    menu items to the right. */
-    .home-menu {
-        text-align: left;
-    }
-	.home-menu ul {
-		float: right;
-	}
-
-	.pure-menu-heading {
+	.pure-menu-heading, .pure-menu-link {
 		padding: 0.5em 1em;
 	}
 
@@ -225,27 +296,28 @@ a.pure-button-primary {
 	}
 
 	.splash {
-		height: 35%;
+		height: 25%;
 	}
 
-    .splash-head {
-        font-size: 250%;
-    }
-
-	.gallery {
-		display: none;
+	.splash-head {
+	    font-size: 250%;
 	}
-	.pure-g {
-		display: block;
+
+	#footer .main-wrapper {
+		text-align: left;
+	}
+
+	#copyright {
+		text-align: right;
 	}
 }
 
 /*
  * -- DESKTOP (AND UP) MEDIA QUERIES --
  */
+
 @media (min-width: 78em) {
-    /* We increase the header font size even more */
-    .splash-head {
-        font-size: 300%;
-    }
+	.splash-head {
+	    font-size: 300%;
+	}
 }
