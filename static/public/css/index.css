@@ -11,7 +11,7 @@
 
 html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
 	color: #4a4a4a;
-	font: normal 20px "Helvetica Neue", Helvetica, sans-serif;
+	font: normal 18px "Helvetica Neue", Helvetica, sans-serif;
 }
 
 a {
@@ -144,7 +144,7 @@ a.pure-button-primary {
 .splash-container {
 	background-image: url(/img/bg.jpg);
 	background-size: cover;
-	background-position: right 40px;
+	background-position: right 2em;
 	z-index: 1;
 	overflow: hidden;
 	/* The following styles are required for the "scroll-over" effect */
@@ -274,7 +274,7 @@ a.pure-button-primary {
 
 @media (min-width: 48em) {
 	.splash-container {
-		background-position: right 84px;
+		background-position: right 4.2em;
 	}
 
 	.content-head {
