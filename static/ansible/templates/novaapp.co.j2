@@ -1,0 +1,24 @@
+#{{ ansible_managed }}
+
+server {
+	server_name novaapp.co;
+	return 301 $scheme://www.novaapp.co$request_uri;
+}
+
+server {
+	server_name www.novaapp.co;
+	root /var/www/novaapp.co/current;
+	index index.html;
+}
+
+server {
+	server_name staging.novaapp.co;
+	root /var/www/staging.novaapp.co/current;
+	index index.html;
+}
+
+server {
+	server_name survey.novaapp.co application.novaapp.co;
+	root /var/www/novaapp.co/current;
+	index survey.html;
+}
