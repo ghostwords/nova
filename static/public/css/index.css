@@ -84,12 +84,10 @@ a.pure-button-primary {
  * -- MENU STYLES --
  */
 
-
 .home-menu {
 	background: white;
 	border-bottom: 1px solid #ccc;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
-	padding: 0.5em;
 
 	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
 	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -102,12 +100,6 @@ a.pure-button-primary {
 	-ms-align-items: center;
 	align-items: center;
 }
-.pure-menu .pure-menu-fixed {
-	/* Fixed menus normally have a border at the bottom. */
-	border-bottom: none;
-	/* I need a higher z-index here because of the scroll-over effect. */
-	z-index: 4;
-}
 
 .pure-menu-heading {
 	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
@@ -116,18 +108,15 @@ a.pure-button-primary {
 	-webkit-flex: 1;          /* Chrome */
 	-ms-flex: 1;              /* IE 10 */
 	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
-	padding: 0 0.25em;
+	padding: 0.2em 1em;
 }
 
 .pure-menu-link {
-	padding: 0 0.25em;
-}
-
-.home-menu .pure-menu-selected a {
+	padding: 0 1em;
 }
 
 .home-menu a {
-	color: #6fbef3;
+	color: #5bc0de;
 	text-transform: uppercase;
 }
 .home-menu li a:hover,
@@ -252,6 +241,10 @@ a.pure-button-primary {
 	align-items: center;
 }
 
+#footer .pure-menu-link {
+	padding: 0 0.25em;
+}
+
 #footer a {
 	color: #4a4a4a;
 	text-transform: uppercase;
@@ -273,6 +266,14 @@ a.pure-button-primary {
  */
 
 @media (min-width: 48em) {
+	br.mbr {
+		display: none;
+	}
+
+	.pure-menu-heading {
+		padding: 0.4em 1em;
+	}
+
 	.splash-container {
 		background-position: right 4.2em;
 	}
@@ -282,7 +283,7 @@ a.pure-button-primary {
 		margin: 15px 0;
 	}
 
-	.pure-menu-heading, .pure-menu-link {
+	.pure-menu-link {
 		padding: 0.5em 1em;
 	}
 
