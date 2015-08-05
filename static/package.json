@@ -5,8 +5,8 @@
   "scripts": {
     "build": "cd public && zip -R ../ansible/nova.zip '*' -x '*.swp'",
     "clean": "rm -f ansible/nova.zip",
-    "deploy": "npm run clean && npm run build && ansible-playbook ansible/deploy.yaml --ask-become-pass --extra-vars \"archive=nova.zip domain=${NOVA_DEPLOY_DOMAIN:-staging.novaapp.co}\" && npm run clean",
-    "deploy-to-prod": "NOVA_DEPLOY_DOMAIN=novaapp.co npm run deploy",
+    "deploy": "npm run clean && npm run build && ansible-playbook ansible/deploy.yaml --ask-become-pass --extra-vars \"archive=nova.zip domain=${NOVA_DEPLOY_DOMAIN:-staging.nova.jobs}\" && npm run clean",
+    "deploy-to-prod": "NOVA_DEPLOY_DOMAIN=nova.jobs npm run deploy",
     "start": "cd public && live-server >/dev/null 2>&1 &"
   },
   "dependencies": {
