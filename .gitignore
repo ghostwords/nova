@@ -1,3 +1,5 @@
 __pycache__/
 *.sw?
 Session.vim
+.env
+node_modules/

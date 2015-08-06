@@ -1,0 +1,323 @@
+* {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/*
+ * -- BASE STYLES --
+ * Most of these are inherited from Base, but I want to change a few.
+ */
+
+html, button, input, select, textarea, .pure-g [class *= "pure-u"] {
+	color: #4a4a4a;
+	font: normal 18px "Helvetica Neue", Helvetica, sans-serif;
+}
+
+a {
+	color: #5bc0de;
+}
+a:hover, a:focus {
+	color: #aecfe5;
+}
+
+hr {
+	background-color: #ccc;
+	border: 0;
+	height: 1px;
+	margin: 0;
+}
+
+p {
+	margin: 0.25em;
+}
+
+.pure-img-responsive {
+	max-width: 100%;
+	height: auto;
+}
+
+/*
+ * -- LAYOUT STYLES --
+ * These are some useful classes which I will need
+ */
+
+.l-box {
+	padding: 0.75em;
+}
+
+.is-center {
+	text-align: center;
+}
+
+.anchor {
+	display: block;
+	position: relative;
+	/* fixed top bar offset */
+	top: -60px;
+	visibility: hidden;
+}
+
+.gray-bg {
+	background: #dcdcdc;
+}
+
+/*
+ * -- PURE BUTTON STYLES --
+ */
+
+.pure-button {
+	border-radius: 5px;
+	margin: 1em;
+	width: 8em;
+}
+
+a.pure-button-primary {
+	color: white;
+	background-color: #5bc0de;
+	font-size: 110%;
+	font-weight: bold;
+}
+
+
+/*
+ * -- MENU STYLES --
+ */
+
+.home-menu {
+	background: white;
+	border-bottom: 1px solid #ccc;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;
+
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+.pure-menu-heading {
+	-webkit-box-flex: 1;      /* OLD - iOS 6-, Safari 3.1-6 */
+	-moz-box-flex: 1;         /* OLD - Firefox 19- */
+	/*width: 20%;*/               /* For old syntax, otherwise collapses. */
+	-webkit-flex: 1;          /* Chrome */
+	-ms-flex: 1;              /* IE 10 */
+	flex: 1;                  /* NEW, Spec - Opera 12.1, Firefox 20+ */
+	padding: 0.2em 1em;
+}
+
+.pure-menu-link {
+	padding: 0 1em;
+}
+
+.home-menu a {
+	color: #5bc0de;
+	text-transform: uppercase;
+}
+.home-menu li a:hover,
+.home-menu li a:focus {
+	background: none;
+	border: none;
+	color: #aecfe5;
+}
+
+/*
+ * -- SPLASH/HERO STYLES --
+ */
+
+.splash-container {
+	background-image: url(../img/bg.jpg);
+	background-size: cover;
+	background-position: right 2em;
+	z-index: 1;
+	overflow: hidden;
+	/* The following styles are required for the "scroll-over" effect */
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	position: fixed !important;
+}
+
+.splash {
+	/* absolute center .splash within .splash-container */
+	width: 85%;
+	height: 30%;
+	margin: auto;
+	position: absolute;
+	top: 0; right: 0; bottom: 0; left: 0;
+	text-align: center;
+	max-width: 800px;
+}
+
+.splash a.pure-button {
+	margin: 0 1em 0.75em;
+}
+
+.splash-head {
+	line-height: 1em;
+	margin: 0.5em 0;
+
+	color: white;
+	font-weight: bold;
+
+	-webkit-text-shadow: 1px 4px 5px #333;
+	-moz-text-shadow:    1px 4px 5px #333;
+	text-shadow:         1px 4px 5px #333;
+}
+
+/*
+ * -- CONTENT STYLES --
+ */
+
+.content {
+	padding: 1em 0.25em;
+}
+
+.content-wrapper {
+	/* These styles are required for the "scroll-over" effect */
+	position: absolute;
+	top: 100%;
+	width: 100%;
+	min-height: 12%;
+	z-index: 2;
+	background: white;
+	/* iOS z-index fix, maybe */
+	-webkit-transform: translate3d(0,0,0);
+}
+
+.main-wrapper {
+	margin: 0 auto;
+	max-width: 950px;
+}
+
+/* This is the class used for the main content headers (<h2>) */
+.content-head {
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0;
+	text-transform: capitalize;
+}
+
+/* This is the class used for the content sub-headers (<h3>) */
+.content-subhead {
+	color: #5bc0de;
+	font-size: 18px;
+	text-transform: uppercase;
+}
+
+/*
+ * -- CAROUSEL STYLES --
+ */
+
+.gallery {
+	margin: 20px 0;
+}
+.cell {
+	width: 100%;
+}
+
+/*
+ * -- FOOTER STYLES --
+ */
+
+#footer .main-wrapper {
+	text-align: center;
+
+	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
+	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
+	display: -ms-flexbox;      /* TWEENER - IE 10 */
+	display: -webkit-flex;     /* NEW - Chrome */
+	display: flex;
+
+	-webkit-align-items: center;
+	-moz-align-items: center;
+	-ms-align-items: center;
+	align-items: center;
+}
+
+#footer .pure-menu-link {
+	padding: 0 0.25em;
+}
+
+#footer a {
+	color: #4a4a4a;
+	text-transform: uppercase;
+}
+#footer li a:hover,
+#footer li a:focus {
+	background: none;
+	border: none;
+	color: #5bc0de;
+}
+
+#copyright {
+	font-weight: bold;
+	padding: 0.5em 1em;
+}
+
+/*
+ * -- TABLET (AND UP) MEDIA QUERIES --
+ */
+
+@media (min-width: 48em) {
+	br.mbr {
+		display: none;
+	}
+
+	.pure-menu-heading {
+		padding: 0.4em 1em;
+	}
+
+	.splash-container {
+		background-position: right 4.2em;
+	}
+
+	.content-head {
+		font-size: 40px;
+		margin: 15px 0;
+	}
+
+	.pure-menu-link {
+		padding: 0.5em 1em;
+	}
+
+	.pure-button {
+		padding: 0.5em 1.25em;
+	}
+
+	a.pure-button-primary {
+		font-size: 140%;
+	}
+
+	.splash {
+		height: 25%;
+	}
+
+	.splash-head {
+	    font-size: 250%;
+	}
+
+	#footer .main-wrapper {
+		text-align: left;
+	}
+
+	#copyright {
+		text-align: right;
+	}
+}
+
+/*
+ * -- DESKTOP (AND UP) MEDIA QUERIES --
+ */
+
+@media (min-width: 78em) {
+	.splash-head {
+	    font-size: 300%;
+	}
+}
