@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html>
 	<head>
@@ -6,10 +7,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Nova: Shift work, the easy way.">
 
-		<link rel="stylesheet" href="/css/pure.css">
-		<link rel="stylesheet" href="/css/grids-responsive.css">
-		<link rel="stylesheet" href="/css/flickity.css">
-		<link rel="stylesheet" href="/css/index.css">
+		<link rel="stylesheet" href="{% static 'homepage/css/pure.css' %}">
+		<link rel="stylesheet" href="{% static 'homepage/css/grids-responsive.css' %}">
+		<link rel="stylesheet" href="{% static 'homepage/css/flickity.css' %}">
+		<link rel="stylesheet" href="{% static 'homepage/css/index.css' %}">
 
 		<script>
 			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -27,7 +28,7 @@
 		<div class="header">
 			<div class="home-menu pure-menu pure-menu-horizontal pure-menu-fixed">
 				<a class="pure-menu-heading" href="/">
-					<img src="/img/logo.png" title="NOVA" width=87 height=60>
+					<img src="{% static 'homepage/img/logo.png' %}" title="NOVA" width=87 height=60>
 				</a>
 				<ul class="pure-menu-list">
 					<li class="pure-menu-item">
@@ -64,21 +65,21 @@
 
 					<div class="pure-g l-box" id="workers-gallery">
 						<div class="pure-u-1 pure-u-md-1-3">
-							<img src="/img/calendar.png" height=110>
+							<img src="{% static 'homepage/img/calendar.png' %}" height=110>
 							<h3 class="content-subhead">
 								Set your hours
 							</h3>
 							<p>Submit your availability to work</p>
 						</div>
 						<div class="pure-u-1 pure-u-md-1-3">
-							<img src="/img/checkbox.png" height=110>
+							<img src="{% static 'homepage/img/checkbox.png' %}" height=110>
 							<h3 class="content-subhead">
 								Get matched
 							</h3>
 							<p>We'll match you with open shifts</p>
 						</div>
 						<div class="pure-u-1 pure-u-md-1-3">
-							<img src="/img/avatar.png" height=110>
+							<img src="{% static 'homepage/img/avatar.png' %}" height=110>
 							<h3 class="content-subhead">
 								Get hired
 							</h3>
@@ -102,21 +103,21 @@
 
 					<div class="pure-g l-box" id="restaurants-gallery">
 						<div class="pure-u-1 pure-u-md-1-3 l-box">
-							<img src="/img/clock.png" height=110>
+							<img src="{% static 'homepage/img/clock.png' %}" height=110>
 							<h3 class="content-subhead">
 								Find help
 							</h3>
 							<p>Post the shifts you need filled</p>
 						</div>
 						<div class="pure-u-1 pure-u-md-1-3 l-box">
-							<img src="/img/magnifying-glass.png" height=110>
+							<img src="{% static 'homepage/img/magnifying-glass.png' %}" height=110>
 							<h3 class="content-subhead">
 								Get matched
 							</h3>
 							<p>We'll match workers available for those shifts</p>
 						</div>
 						<div class="pure-u-1 pure-u-md-1-3 l-box">
-							<img src="/img/thumbs-up.png" height=110>
+							<img src="{% static 'homepage/img/thumbs-up.png' %}" height=110>
 							<h3 class="content-subhead">
 								Problem solved
 							</h3>
@@ -166,10 +167,10 @@
 
 		</div>
 
-		<script src="/js/smooth-scroll.min.js"></script>
-		<script src="/js/enquire.min.js"></script>
-		<script src="/js/flickity.pkgd.min.js"></script>
-		<script src="/js/index.js"></script>
+		<script src="{% static 'homepage/js/smooth-scroll.min.js' %}"></script>
+		<script src="{% static 'homepage/js/enquire.min.js' %}"></script>
+		<script src="{% static 'homepage/js/flickity.pkgd.min.js' %}"></script>
+		<script src="{% static 'homepage/js/index.js' %}"></script>
 
 	</body>
 </html>

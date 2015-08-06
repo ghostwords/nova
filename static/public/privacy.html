@@ -1,3 +1,4 @@
+{% load staticfiles %}
 <!doctype html>
 <html>
 	<head>
@@ -6,7 +7,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Nova: Shift work, the easy way.">
 
-		<link rel="stylesheet" href="/css/index.css">
+		<link rel="stylesheet" href="{% static 'homepage/css/index.css' %}">
 		<style>
 p {
 	margin: 1em 0;
