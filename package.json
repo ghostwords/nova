@@ -1,6 +1,6 @@
 {
   "name": "Nova",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "scripts": {
     "build": "cd public && zip -R ../ansible/nova.zip '*' -x '*.swp'",
