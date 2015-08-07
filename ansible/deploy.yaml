@@ -8,6 +8,7 @@
 
   vars:
     release_dir: /var/www/{{ domain }}/releases/{{ timestamp.stdout }}
+    virtualenv_dir: "{{ release_dir }}/venv"
 
   tasks:
 
@@ -23,8 +24,63 @@
   - name: Upload and unpack files
     unarchive: src={{ archive }} dest={{ release_dir }}
 
+  - name: Create the virtualenv
+    command: virtualenv {{ virtualenv_dir }} --no-site-packages -p /usr/bin/python3
+      creates={{ virtualenv_dir }}/bin/activate
+
+  - name: Copy uWSGI Upstart service config
+    template: src=templates/upstart.uwsgi.conf.j2 dest=/etc/init/uwsgi-{{ domain }}.conf
+    become_user: root
+    notify:
+     - reload uWSGI
+
+  - name: Install uWSGI
+    pip: virtualenv={{ virtualenv_dir }} name=uwsgi
+    notify:
+     - reload uWSGI
+
+  - name: Copy uWSGI ini config
+    template: src=templates/uwsgi.ini.j2 dest={{ release_dir}}/uwsgi.ini
+    notify:
+     - reload uWSGI
+
+  - name: Install packages from requirements.txt
+    pip:
+      virtualenv: "{{ virtualenv_dir }}"
+      requirements: "{{ release_dir }}/requirements.txt"
+
+  # TODO
+  #- name: Run Django database migrations
+  #  django_manage:
+  #    command: migrate
+  #    app_path: "{{ release_dir }}"
+  #    virtualenv: "{{ virtualenv_dir }}"
+  #    settings: "{{ django_settings_file }}"
+  #  environment: django_environment
+  #  when: run_django_db_migrations is defined and run_django_db_migrations
+  #  tags: django.migrate
+
+  - name: Run Django collectstatic
+    django_manage:
+      command: collectstatic
+      app_path: "{{ release_dir }}"
+      virtualenv: "{{ virtualenv_dir }}"
+
   - name: Update app version
     file:
       state: link
       src: "{{ release_dir }}"
       path: /var/www/{{ domain }}/current
+    # TODO
+    notify:
+      - reload nginx
+      - reload uWSGI
+
+  handlers:
+
+  - name: reload nginx
+    service: name=nginx state=reloaded
+
+  - name: reload uWSGI
+    become_user: root
+    service: name=uwsgi-{{ domain }} state=reloaded

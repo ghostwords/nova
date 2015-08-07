@@ -1,0 +1,13 @@
+#{{ ansible_managed }}
+
+description "{{ domain }} uWSGI server"
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+setuid www-data
+setgid www-data
+
+env PATH=/var/www/{{ domain }}/current/venv/bin
+chdir /var/www/{{ domain }}/current
+exec uwsgi --ini uwsgi.ini

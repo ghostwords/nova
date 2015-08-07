@@ -6,19 +6,34 @@ server {
 }
 
 server {
+	server_name survey.nova.jobs application.nova.jobs;
+	return 302 $scheme://www.nova.jobs/survey;
+}
+
+server {
 	server_name www.nova.jobs;
 	root /var/www/nova.jobs/current;
-	index index.html;
+
+	location /static {
+		alias /var/www/nova.jobs/current/static;
+	}
+
+	location / {
+		uwsgi_pass unix:/tmp/uwsgi-nova.jobs.sock;
+		include /etc/nginx/uwsgi_params;
+	}
 }
 
 server {
 	server_name staging.nova.jobs;
 	root /var/www/staging.nova.jobs/current;
-	index index.html;
-}
 
-server {
-	server_name survey.nova.jobs application.nova.jobs;
-	root /var/www/nova.jobs/current;
-	index survey.html;
+	location /static {
+		alias /var/www/staging.nova.jobs/current/static;
+	}
+
+	location / {
+		uwsgi_pass unix:/tmp/uwsgi-staging.nova.jobs.sock;
+		include /etc/nginx/uwsgi_params;
+	}
 }

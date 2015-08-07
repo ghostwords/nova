@@ -5,6 +5,12 @@
 
   tasks:
 
+  - name: Install required system packages
+    apt: pkg={{ item }} state=installed update-cache=yes
+    with_items:
+      - python-dev
+      - libpq-dev
+
   - name: Copy mime.types
     template: src=templates/mime.types.1.j2 dest=/etc/nginx/mime.types.1
     notify:
@@ -15,12 +21,12 @@
     notify:
      - reload nginx
 
-  - name: Copy site config
+  - name: Copy nginx site config
     template: src=templates/{{ domain }}.j2 dest=/etc/nginx/sites-available/{{ domain }}
     notify:
      - reload nginx
 
-  - name: Activate site config
+  - name: Activate nginx site config
     file:
       state: link
       src: /etc/nginx/sites-available/{{ domain }}
@@ -32,6 +38,9 @@
     changed_when: "result.rc != 0"
     always_run: yes
 
+  # TODO ensure uWSGI log directories exist
+
   handlers:
+
   - name: reload nginx
     service: name=nginx state=reloaded
