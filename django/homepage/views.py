@@ -7,3 +7,7 @@ def index(request):
 
 def privacy(request):
     return render(request, 'homepage/privacy.html')
+
+
+def survey(request):
+    return render(request, 'homepage/survey.html')
