@@ -1,0 +1,10 @@
+---
+
+- name: Install required system packages
+  # TODO update_cache once before anything else
+  apt: name={{ item }} state=installed
+  with_items:
+    - python-dev
+    # TODO move to db role?
+    - libpq-dev
+  tags: setup

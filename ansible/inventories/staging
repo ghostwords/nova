@@ -1,0 +1,5 @@
+[webservers]
+panopticlicker.com:8975
+
+[webservers:vars]
+domain=staging.nova.jobs

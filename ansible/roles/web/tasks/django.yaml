@@ -1,0 +1,72 @@
+---
+
+- name: Get timestamp
+  local_action: shell date +%s%3N
+  register: timestamp
+  run_once: True
+  become: False
+
+- name: create release archive
+  local_action: command
+    zip -R ../ansible/nova.zip '*' -x '*.swp' -x '*__pycache__*'
+    chdir=../django
+  become: False
+
+- name: Create release directory
+  file: path={{ release_dir }} state=directory
+
+- name: Upload and unpack release archive
+  unarchive: src=nova.zip dest={{ release_dir }}
+
+# TODO unnecessary? http://docs.ansible.com/ansible/pip_module.html
+- name: Create the virtualenv
+  command: virtualenv {{ virtualenv_dir }} --no-site-packages -p /usr/bin/python3
+    creates={{ virtualenv_dir }}/bin/activate
+
+- name: Copy uWSGI Upstart service config
+  template: src=upstart.uwsgi.conf.j2 dest=/etc/init/uwsgi-{{ domain }}.conf
+  become_user: root
+  notify:
+   - restart uWSGI
+
+- name: Install uWSGI
+  pip: virtualenv={{ virtualenv_dir }} name=uwsgi
+  notify:
+   - restart uWSGI
+
+- name: Copy uWSGI ini config
+  template: src=uwsgi.ini.j2 dest={{ release_dir}}/uwsgi.ini
+  notify:
+   - restart uWSGI
+
+- name: Install packages from requirements.txt
+  pip:
+    virtualenv: "{{ virtualenv_dir }}"
+    requirements: "{{ release_dir }}/requirements.txt"
+
+# TODO
+#- name: Run Django database migrations
+#  django_manage:
+#    command: migrate
+#    app_path: "{{ release_dir }}"
+#    virtualenv: "{{ virtualenv_dir }}"
+#    settings: "{{ django_settings_file }}"
+#  environment: django_environment
+#  when: run_django_db_migrations is defined and run_django_db_migrations
+#  tags: django.migrate
+
+- name: Run Django collectstatic
+  django_manage:
+    command: collectstatic
+    app_path: "{{ release_dir }}"
+    virtualenv: "{{ virtualenv_dir }}"
+
+- name: Update app version
+  file:
+    state: link
+    src: "{{ release_dir }}"
+    path: /var/www/{{ domain }}/current
+  # TODO need to restart ... when to restart and when to reload?
+  notify:
+    - reload Nginx
+    - restart uWSGI

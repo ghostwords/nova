@@ -15,7 +15,7 @@ server {
 	root /var/www/nova.jobs/current;
 
 	location /static {
-		alias /var/www/nova.jobs/current/static;
+		alias /var/www/nova.jobs/current/public/static;
 	}
 
 	location / {
@@ -29,7 +29,7 @@ server {
 	root /var/www/staging.nova.jobs/current;
 
 	location /static {
-		alias /var/www/staging.nova.jobs/current/static;
+		alias /var/www/staging.nova.jobs/current/public/static;
 	}
 
 	location / {

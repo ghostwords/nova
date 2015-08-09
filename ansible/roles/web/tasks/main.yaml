@@ -1,0 +1,14 @@
+---
+
+- include: nginx.yaml domain=nova.jobs
+  tags: setup
+
+- include: uwsgi.yaml
+  tags: setup
+
+- include: django.yaml
+  become_user: www-data
+  vars:
+    release_dir: /var/www/{{ domain }}/releases/{{ timestamp.stdout }}
+    virtualenv_dir: "{{ release_dir }}/venv"
+  tags: deploy
