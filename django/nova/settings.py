@@ -5,9 +5,12 @@ BASE_DIR = root()
 
 # set default values and casting
 env = Env(
-    DEBUG=(bool, False)
+    DEBUG=(bool, False),
+    LOCAL=(bool, False)
 )
-Env.read_env()
+Env.read_env(
+    env_file='.env.local' if env('LOCAL') else '.env'
+)
 
 DEBUG = env('DEBUG')
 
