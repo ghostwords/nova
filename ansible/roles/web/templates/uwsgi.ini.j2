@@ -10,5 +10,5 @@ module = nova.wsgi
 master = true
 processes = 4
 die-on-term = true
-req-logger = file:/var/log/uwsgi-{{ domain }}/access.log
-logger = file:/var/log/uwsgi-{{ domain }}/error.log
+req-logger = file:/var/log/uwsgi/{{ domain }}-access.log
+logger = file:/var/log/uwsgi/{{ domain }}-error.log
