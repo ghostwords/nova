@@ -17,7 +17,7 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
 ALLOWED_HOSTS = [
-    'nova.jobs'
+    '.nova.jobs'
 ]
 
 INSTALLED_APPS = (
