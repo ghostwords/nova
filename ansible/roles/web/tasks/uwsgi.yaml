@@ -1,0 +1,16 @@
+---
+
+- name: Install required system packages (pip3)
+  # TODO update_cache once before anything else
+  apt: name=python3-pip state=installed
+
+- name: Install uWSGI
+  pip: executable=pip3 name=uwsgi state=latest
+  notify:
+   - restart uWSGI
+
+- name: Copy uWSGI Upstart service config
+  template: src=upstart.uwsgi.conf.j2 dest=/etc/init/uwsgi-{{ domain }}.conf
+  become_user: root
+  notify:
+   - restart uWSGI

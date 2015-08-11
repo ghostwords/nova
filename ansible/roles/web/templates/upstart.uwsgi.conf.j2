@@ -8,6 +8,16 @@ stop on runlevel [!2345]
 setuid www-data
 setgid www-data
 
-env PATH=/var/www/{{ domain }}/current/venv/bin
-chdir /var/www/{{ domain }}/current
-exec uwsgi --ini uwsgi.ini
+exec uwsgi \
+	--socket /tmp/uwsgi-{{ domain }}.sock \
+	--chmod-socket=660 \
+	--uid www-data \
+	--gid www-data \
+	--virtualenv /var/www/{{ domain }}/current/venv \
+	--chdir /var/www/{{ domain }}/current \
+	--module nova.wsgi \
+	--master \
+	--processes 4 \
+	--logger-req file:/var/log/uwsgi/{{ domain }}-access.log \
+	--logger file:/var/log/uwsgi/{{ domain }}-error.log \
+	--die-on-term

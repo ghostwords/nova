@@ -3,6 +3,11 @@
 - include: nginx.yaml domain=nova.jobs
   tags: setup
 
+- include: uwsgi.yaml
+  tags:
+    - setup
+    - uwsgi
+
 - include: django.yaml
   become_user: www-data
   vars:

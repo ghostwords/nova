@@ -23,22 +23,6 @@
   command: virtualenv {{ virtualenv_dir }} --no-site-packages -p /usr/bin/python3
     creates={{ virtualenv_dir }}/bin/activate
 
-- name: Copy uWSGI Upstart service config
-  template: src=upstart.uwsgi.conf.j2 dest=/etc/init/uwsgi-{{ domain }}.conf
-  become_user: root
-  notify:
-   - restart uWSGI
-
-- name: Install uWSGI
-  pip: virtualenv={{ virtualenv_dir }} name=uwsgi
-  notify:
-   - restart uWSGI
-
-- name: Copy uWSGI ini config
-  template: src=uwsgi.ini.j2 dest={{ release_dir}}/uwsgi.ini
-  notify:
-   - restart uWSGI
-
 - name: Install packages from requirements.txt
   pip:
     virtualenv: "{{ virtualenv_dir }}"
