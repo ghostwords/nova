@@ -6,6 +6,7 @@ server {
 }
 
 server {
+	# TODO performance: just list out the domains instead?
 	server_name ~^(?<subdomain>\w+)\.novaapp\.co$;
 	return 301 $scheme://$subdomain.nova.jobs$request_uri;
 }

@@ -1,5 +1,6 @@
 ---
 
+# TODO hardcoding the domain here is bad; break up nginx configs by domain
 - include: nginx.yaml domain=nova.jobs
   tags: setup
 

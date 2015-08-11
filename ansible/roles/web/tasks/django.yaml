@@ -6,6 +6,7 @@
   run_once: True
   become: False
 
+# TODO look at how heroku has you manage production credentials
 - name: create release archive
   local_action: command
     zip -R ../ansible/nova.zip '*' -x '*.swp' -x '*__pycache__*'
@@ -23,6 +24,7 @@
   command: virtualenv {{ virtualenv_dir }} --no-site-packages -p /usr/bin/python3
     creates={{ virtualenv_dir }}/bin/activate
 
+# TODO use virtualenvwrapper to cache packages to save bandwidth
 - name: Install packages from requirements.txt
   pip:
     virtualenv: "{{ virtualenv_dir }}"
@@ -54,3 +56,5 @@
   notify:
     - reload Nginx
     - restart uWSGI
+
+# TODO clean up old deploys

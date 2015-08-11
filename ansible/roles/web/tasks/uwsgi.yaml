@@ -14,3 +14,5 @@
   become_user: root
   notify:
    - restart uWSGI
+
+# TODO emperor mode: http://daeyunshin.com/2013/01/06/nginx-uwsgi-django-flask-deployment.html
