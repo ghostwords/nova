@@ -27,13 +27,16 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_extensions',
     #'core',
     #'signup',
     #'scheduler',
     #'review',
     'homepage',
 )
+if env('LOCAL'):
+    INSTALLED_APPS += (
+        'django_extensions',
+    )
 
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',

@@ -1,11 +1,6 @@
-coverage
 Django==1.8.3
 django-environ==0.3.0
-django-extensions
-freezegun==0.3.4
 django-donottrack==0.1
-ipython
-prospector==0.10.2
 psycopg2==2.6.1
 pyinotify
 pytz

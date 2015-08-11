@@ -1,0 +1,6 @@
+-r requirements.txt
+coverage
+django-extensions
+freezegun==0.3.4
+ipython
+prospector==0.10.2
