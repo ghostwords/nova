@@ -115,6 +115,11 @@ STATICFILES_DIRS = (
     root('static'),
 )
 
+# Fingerprint static resources (cache busting) so that we can serve them
+# with far-future expires headers and not run into stale cache problems.
+# This makes the static template tag insert content hashes into filenames.
+STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
+
 # make Django Compressor work with `./manage.py collectstatic`
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
