@@ -23,20 +23,3 @@ server {
 		include /etc/nginx/uwsgi_params;
 	}
 }
-
-server {
-	server_name staging.nova.jobs;
-	root /var/www/staging.nova.jobs/current;
-
-	location /static {
-		root /var/www/staging.nova.jobs/current/public;
-		access_log off;
-		expires max;
-		add_header Cache-Control "public";
-	}
-
-	location / {
-		uwsgi_pass unix:/tmp/uwsgi-staging.nova.jobs.sock;
-		include /etc/nginx/uwsgi_params;
-	}
-}
