@@ -127,9 +127,6 @@ STATICFILES_FINDERS = (
     'compressor.finders.CompressorFinder',
 )
 
-# tell Compressor to apply the compress template tag even when DEBUG is True
-COMPRESS_ENABLED = True
-
 # will be using `./manage.py compress` to pre-build compress-tagged assets
 COMPRESS_OFFLINE = True
 
