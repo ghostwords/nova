@@ -15,7 +15,10 @@ server {
 	root /var/www/nova.jobs/current;
 
 	location /static {
-		alias /var/www/nova.jobs/current/public/static;
+		root /var/www/nova.jobs/current/public;
+		access_log off;
+		expires max;
+		add_header Cache-Control "public";
 	}
 
 	location / {
