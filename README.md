@@ -1,4 +1,4 @@
-# NOVA
+# nova.jobs
 
 ## Deploying
 
@@ -14,12 +14,8 @@
 
 `ansible-playbook -i ansible/inventories/staging ansible/site.yaml --ask-become-pass --tags deploy`
 
-## Roadmap
+## License
 
-- mobile-first (Pure.css?)
-- i18n
-- Fb/Goog auth
-- e-mailing
-- texting
-- background checks
-- other (work-permit?) documentation
+The source code is licensed under Mozilla Public License Version 2.0.
+
+All assets (images/logos/branding) are property of Team Nova.
