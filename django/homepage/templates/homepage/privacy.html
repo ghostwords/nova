@@ -1,3 +1,4 @@
+{% load compress %}
 {% load staticfiles %}
 <!doctype html>
 <html>
@@ -7,12 +8,14 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Nova: Shift work, the easy way.">
 
+		{% compress css %}
 		<link rel="stylesheet" href="{% static 'homepage/css/index.css' %}">
 		<style>
 p {
 	margin: 1em 0;
 }
 		</style>
+		{% endcompress %}
 
 		{% if not request.donottrack %}
 		<script>

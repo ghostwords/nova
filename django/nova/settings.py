@@ -27,6 +27,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'compressor',
     #'core',
     #'signup',
     #'scheduler',
@@ -113,3 +114,29 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     root('static'),
 )
+
+# make Django Compressor work with `./manage.py collectstatic`
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
+)
+
+# tell Compressor to apply the compress template tag even when DEBUG is True
+COMPRESS_ENABLED = True
+
+# will be using `./manage.py compress` to pre-build compress-tagged assets
+COMPRESS_OFFLINE = True
+
+# any template variables inside compress blocks have to be declared here
+#COMPRESS_OFFLINE_CONTEXT = {
+#}
+
+# minify CSS
+COMPRESS_CSS_FILTERS = [
+    'compressor.filters.css_default.CssAbsoluteFilter',
+    'compressor.filters.cssmin.CSSMinFilter',
+]
+
+# don't append query strings to url() assets in CSS
+COMPRESS_CSS_HASHING_METHOD = None

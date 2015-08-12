@@ -1,3 +1,4 @@
+{% load compress %}
 {% load staticfiles %}
 <!doctype html>
 <html>
@@ -7,10 +8,12 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<meta name="description" content="Nova: Shift work, the easy way.">
 
+		{% compress css %}
 		<link rel="stylesheet" href="{% static 'homepage/css/pure.css' %}">
 		<link rel="stylesheet" href="{% static 'homepage/css/grids-responsive.css' %}">
 		<link rel="stylesheet" href="{% static 'homepage/css/flickity.css' %}">
 		<link rel="stylesheet" href="{% static 'homepage/css/index.css' %}">
+		{% endcompress %}
 
 		{% if not request.donottrack %}
 		<script>
@@ -169,10 +172,12 @@
 
 		</div>
 
+		{% compress js %}
 		<script src="{% static 'homepage/js/smooth-scroll.min.js' %}"></script>
 		<script src="{% static 'homepage/js/enquire.min.js' %}"></script>
 		<script src="{% static 'homepage/js/flickity.pkgd.min.js' %}"></script>
 		<script src="{% static 'homepage/js/index.js' %}"></script>
+		{% endcompress %}
 
 	</body>
 </html>

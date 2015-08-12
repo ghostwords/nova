@@ -41,9 +41,15 @@
 #  when: run_django_db_migrations is defined and run_django_db_migrations
 #  tags: django.migrate
 
-- name: Run Django collectstatic
+- name: Run django-admin collectstatic
   django_manage:
     command: collectstatic
+    app_path: "{{ release_dir }}"
+    virtualenv: "{{ virtualenv_dir }}"
+
+- name: Run django-admin compress
+  django_manage:
+    command: compress
     app_path: "{{ release_dir }}"
     virtualenv: "{{ virtualenv_dir }}"
 
