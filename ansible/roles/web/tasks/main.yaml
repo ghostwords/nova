@@ -8,6 +8,9 @@
     - setup
     - uwsgi
 
+- include: memcached.yaml
+  tags: setup
+
 - include: django.yaml
   become_user: www-data
   vars:

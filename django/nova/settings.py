@@ -40,10 +40,17 @@ if env('LOCAL'):
     )
 
 MIDDLEWARE_CLASSES = (
+    # before any that modify the Vary header
+    'django.middleware.cache.UpdateCacheMiddleware',
+
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
     'donottrack.middleware.DoNotTrackMiddleware',
     'django.middleware.common.CommonMiddleware',
+
+    # after any that modify the Vary header
+    'django.middleware.cache.FetchFromCacheMiddleware',
+
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
@@ -142,3 +149,27 @@ COMPRESS_CSS_FILTERS = [
 
 # don't append query strings to url() assets in CSS
 COMPRESS_CSS_HASHING_METHOD = None
+
+
+# Django Cache Framework
+def _get_caches():
+    if env('LOCAL'):
+        return {
+            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+        }
+
+    # Memcached in prod
+    return {
+        'BACKEND': 'django_pylibmc.memcached.PyLibMCCache',
+        'LOCATION': '/tmp/memcached.sock',
+        'TIMEOUT': 500,
+        'BINARY': True,
+        'OPTIONS': {}
+    }
+
+CACHES = {
+    'default': _get_caches()
+}
+CACHE_MIDDLEWARE_ALIAS = 'default'
+CACHE_MIDDLEWARE_SECONDS = 60
+CACHE_MIDDLEWARE_KEY_PREFIX = 'nova'

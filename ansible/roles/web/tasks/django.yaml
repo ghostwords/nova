@@ -7,7 +7,7 @@
   become: False
 
 # TODO look at how heroku has you manage production credentials
-- name: create release archive
+- name: Create release archive
   local_action: command
     zip --filesync -R ../ansible/nova.zip '*' -x '*.swp' -x '*__pycache__*'
     chdir=../django

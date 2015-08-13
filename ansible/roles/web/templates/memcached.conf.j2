@@ -1,0 +1,13 @@
+#{{ ansible_managed }}
+
+# log to /var/log/memcached
+logfile /var/log/memcached.log
+
+# run the daemon as user nobody
+-u nobody
+
+# Unix socket path to listen on (disables network support)
+-s /tmp/memcached.sock
+
+# permissions (in octal format) for Unix socket created with -s option
+-a 0666

@@ -2,5 +2,6 @@ Django==1.8.3
 django_compressor==1.5
 django-donottrack==0.1
 django-environ==0.3.0
+django-pylibmc
 psycopg2==2.6.1
 pytz
