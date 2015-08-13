@@ -1,12 +1,21 @@
 #{{ ansible_managed }}
 
 server {
-	server_name novaapp.co;
-	return 301 $scheme://www.nova.jobs$request_uri;
+	server_name novaapp.co www.novaapp.co;
+	return 301 https://www.nova.jobs$request_uri;
 }
 
 server {
-	# TODO performance: just list out the domains instead?
-	server_name ~^(?<subdomain>\w+)\.novaapp\.co$;
-	return 301 $scheme://$subdomain.nova.jobs$request_uri;
+	server_name application.novaapp.co;
+	return 301 http://application.nova.jobs$request_uri;
+}
+
+server {
+	server_name survey.novaapp.co;
+	return 301 http://survey.nova.jobs$request_uri;
+}
+
+server {
+	server_name staging.novaapp.co;
+	return 301 $scheme://staging.nova.jobs$request_uri;
 }
