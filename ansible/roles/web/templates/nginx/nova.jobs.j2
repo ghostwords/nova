@@ -1,17 +1,37 @@
 #{{ ansible_managed }}
 
 server {
-	server_name nova.jobs;
-	return 301 $scheme://www.nova.jobs$request_uri;
+	listen [::]:80;
+	listen 80;
+	server_name nova.jobs www.nova.jobs;
+
+	# redirect non-SSL to SSL
+	return 301 https://www.nova.jobs$request_uri;
 }
 
 server {
 	server_name survey.nova.jobs application.nova.jobs;
-	return 302 $scheme://www.nova.jobs/survey;
+	return 302 https://www.nova.jobs/survey;
 }
 
 server {
+	listen [::]:443 ssl spdy;
+	listen 443 ssl spdy;
+	server_name nova.jobs;
+
+	include /etc/nginx/ssl/nova.jobs.ssl.conf;
+
+	# redirect non-www SSL to www SSL
+	return 301 https://www.nova.jobs$request_uri;
+}
+
+server {
+	listen [::]:443 ssl spdy;
+	listen 443 ssl spdy;
 	server_name www.nova.jobs;
+
+	include /etc/nginx/ssl/nova.jobs.ssl.conf;
+
 	root /var/www/nova.jobs/current;
 
 	location /static {

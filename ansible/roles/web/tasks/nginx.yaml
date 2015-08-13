@@ -20,6 +20,11 @@
   notify:
    - reload Nginx
 
+- name: Copy Nginx SSL site config
+  template: src=nginx/ssl.conf.j2 dest=/etc/nginx/ssl/{{ domain }}.ssl.conf
+  notify:
+   - reload Nginx
+
 - name: Activate Nginx site config
   file:
     state: link
