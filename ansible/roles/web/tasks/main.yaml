@@ -1,7 +1,9 @@
 ---
 
 - include: nginx.yaml
-  tags: setup
+  tags:
+    - nginx
+    - setup
 
 - include: uwsgi.yaml
   tags:
@@ -9,7 +11,9 @@
     - uwsgi
 
 - include: memcached.yaml
-  tags: setup
+  tags:
+    - memcached
+    - setup
 
 - include: django.yaml
   become_user: www-data
