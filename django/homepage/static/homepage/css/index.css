@@ -161,12 +161,12 @@ a.pure-button-primary {
 }
 
 .splash-head {
+	color: white;
 	font-size: 30px;
+	font-weight: bold;
 	line-height: 1em;
 	margin: 0.5em 0;
-
-	color: white;
-	font-weight: bold;
+	white-space: nowrap;
 
 	-webkit-text-shadow: 1px 4px 5px #333;
 	-moz-text-shadow:    1px 4px 5px #333;
