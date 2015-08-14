@@ -21,7 +21,6 @@ ALLOWED_HOSTS = [
 ]
 
 INSTALLED_APPS = (
-    'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -36,7 +35,9 @@ INSTALLED_APPS = (
 )
 if env('LOCAL'):
     INSTALLED_APPS += (
+        'django.contrib.admin',
         'django_extensions',
+        'rosetta',
     )
 
 MIDDLEWARE_CLASSES = (
@@ -103,6 +104,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOCALE_PATHS = (
+    root('locale'),
+)
 
 
 # Static files (CSS, JavaScript, Images)
