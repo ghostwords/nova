@@ -88,6 +88,7 @@ a.pure-button-primary {
 	background: white;
 	border-bottom: 1px solid #ccc;
 	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.10);
+	width: 100%;
 
 	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
 	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
@@ -111,8 +112,8 @@ a.pure-button-primary {
 	padding: 0.2em 1em;
 }
 
-.pure-menu-link {
-	padding: 0 1em;
+.home-menu .pure-menu-link {
+	padding: 0.5em 1em 0;
 }
 
 .home-menu a {
@@ -160,6 +161,7 @@ a.pure-button-primary {
 }
 
 .splash-head {
+	font-size: 30px;
 	line-height: 1em;
 	margin: 0.5em 0;
 
@@ -216,7 +218,7 @@ a.pure-button-primary {
  */
 
 .gallery {
-	margin: 20px 0;
+	margin: 20px 0 10px;
 }
 .cell {
 	width: 100%;
@@ -226,31 +228,18 @@ a.pure-button-primary {
  * -- FOOTER STYLES --
  */
 
-#footer .main-wrapper {
+#footer {
 	text-align: center;
-
-	display: -webkit-box;      /* OLD - iOS 6-, Safari 3.1-6 */
-	display: -moz-box;         /* OLD - Firefox 19- (buggy but mostly works) */
-	display: -ms-flexbox;      /* TWEENER - IE 10 */
-	display: -webkit-flex;     /* NEW - Chrome */
-	display: flex;
-
-	-webkit-align-items: center;
-	-moz-align-items: center;
-	-ms-align-items: center;
-	align-items: center;
-}
-
-#footer .pure-menu-link {
-	padding: 0 0.25em;
+	width: 100%;
 }
 
 #footer a {
 	color: #4a4a4a;
+	padding: 0.5em 1em;
 	text-transform: uppercase;
 }
-#footer li a:hover,
-#footer li a:focus {
+#footer a:hover,
+#footer a:focus {
 	background: none;
 	border: none;
 	color: #5bc0de;
@@ -283,10 +272,6 @@ a.pure-button-primary {
 		margin: 15px 0;
 	}
 
-	.pure-menu-link {
-		padding: 0.5em 1em;
-	}
-
 	.pure-button {
 		padding: 0.5em 1.25em;
 	}
@@ -303,12 +288,12 @@ a.pure-button-primary {
 	    font-size: 250%;
 	}
 
-	#footer .main-wrapper {
-		text-align: left;
+	#footer {
+		text-align: right;
 	}
 
-	#copyright {
-		text-align: right;
+	#footer-menu {
+		text-align: left;
 	}
 }
 

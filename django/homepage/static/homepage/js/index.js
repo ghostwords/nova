@@ -58,7 +58,9 @@ enquire.register("screen and (min-width: 48em)", {
 		});
 
 		gals = GAL_IDS.map(function (id) {
-			return new Flickity('#' + id)
+			return new Flickity('#' + id, {
+				pageDots: false
+			});
 		});
 	}
 });
