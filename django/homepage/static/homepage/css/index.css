@@ -274,6 +274,7 @@ a.pure-button-primary {
 
 	.pure-button {
 		padding: 0.5em 1.25em;
+		width: 9em;
 	}
 
 	a.pure-button-primary {
