@@ -160,7 +160,7 @@ COMPRESS_CSS_HASHING_METHOD = None
 def _get_caches():
     if env('LOCAL'):
         return {
-            'BACKEND': 'django.core.cache.backends.locmem.LocMemCache'
+            'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
         }
 
     # Memcached in prod
