@@ -11,7 +11,7 @@ Django project in `django/`, Ansible provisioning and deployment stuff in `ansib
 
 ## Working on the site
 
-Make a bash alias for `LOCAL=1 python manage.py`. Call it `dj` and then run `dj runserver` from the `django/` project directory.
+Run `python manage.py runserver` from the `django/` project directory.
 
 
 ## Working with translations

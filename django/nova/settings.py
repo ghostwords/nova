@@ -6,11 +6,8 @@ BASE_DIR = root()
 # set default values and casting
 env = Env(
     DEBUG=(bool, False),
-    LOCAL=(bool, False)
 )
-Env.read_env(
-    env_file='.env.local' if env('LOCAL') else '.env'
-)
+Env.read_env()
 
 DEBUG = env('DEBUG')
 
@@ -33,7 +30,7 @@ INSTALLED_APPS = (
     #'review',
     'homepage',
 )
-if env('LOCAL'):
+if DEBUG:
     INSTALLED_APPS += (
         'django.contrib.admin',
         'django_extensions',
@@ -158,7 +155,7 @@ COMPRESS_CSS_HASHING_METHOD = None
 
 # Django Cache Framework
 def _get_caches():
-    if env('LOCAL'):
+    if DEBUG:
         return {
             'BACKEND': 'django.core.cache.backends.dummy.DummyCache'
         }
