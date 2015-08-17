@@ -34,5 +34,6 @@
 - name: Check Nginx syntax of configuration files
   shell: "nginx -t"
   register: result
+  # TODO failed_when?
   changed_when: "result.rc != 0"
   always_run: yes
