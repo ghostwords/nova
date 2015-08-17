@@ -35,7 +35,7 @@ List "deploy" tasks:
 
 Deploy to staging server(s):
 
-`ansible-playbook -i ansible/inventories/staging ansible/site.yaml --ask-become-pass --tags deploy`
+`ansible-playbook -i ansible/staging ansible/site.yaml --ask-become-pass --tags deploy`
 
 Actually ... The same server is currently used for staging and production domains, but we vary the domain variable in the inventory.
 
