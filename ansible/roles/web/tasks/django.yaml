@@ -30,6 +30,10 @@
     virtualenv: "{{ virtualenv_dir }}"
     requirements: "{{ release_dir }}/requirements.txt"
 
+# TODO factor out django app name
+- name: Create Django environment config
+  template: src=.env.j2 dest={{ release_dir }}/nova/.env
+
 # TODO
 #- name: Run Django database migrations
 #  django_manage:
