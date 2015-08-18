@@ -1,6 +1,7 @@
 ---
 domain: staging.nova.jobs
 
+django_cache_middleware_key_prefix: nova-staging
 django_secret_key: 5cfw@s5+sopy#i^%%a#qmslwx_$%164(z^z-)o50@h^&!(r2wm
 
 dbuser: alexei
